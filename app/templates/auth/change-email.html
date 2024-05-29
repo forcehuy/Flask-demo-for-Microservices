@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% from "bootstrap4/form.html" import render_form %}
+{% block title %}Flasky - Change Email Address{% endblock %} {% block
+page_content %}{% block head %} {{ super() }} {% if
+current_user.is_authenticated %}
+<meta
+  http-equiv="refresh"
+  content="10; url={{ url_for('auth.change_password') }}"
+/>
+{% endif %} {% endblock %}
+<div class="page-header">
+  <h1>Change Email Address</h1>
+</div>
+<div class="col-md-4">
+  {% if current_user.is_authenticated %}
+  <div>{{ render_form(form) }}</div>
+  {% else %}
+  <div>
+    <p>
+      Please <a href="{{ url_for('auth.login') }}">log in</a> to your account to
+      change email address.
+    </p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

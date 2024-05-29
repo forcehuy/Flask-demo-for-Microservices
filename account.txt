@@ -1,0 +1,4 @@
+Email: tuanforce1999@gmail.com
+Pass: huy123
+
+User(email='tuanforce1999@gmail.com', username='huy', password='huy123', name='Hoang Tuan Huy', location='Ho Chi Minh City, Vietnam', about_me='Something about me', confirmed=True)

@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% from "bootstrap4/form.html" import render_form %}
+{% block title %}Flasky - Login{% endblock %} {% block head %} {{ super() }} {%
+if current_user.is_authenticated %}
+<meta http-equiv="refresh" content="10; url={{ url_for('main.index') }}" />
+{% endif %} {% endblock %} {% block page_content %}
+<div class="page-header">
+  <h1>Login</h1>
+</div>
+<div class="col-md-4">
+  {% if current_user.is_authenticated %}
+  <div class="alert alert-warning">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <p>
+      Since you have signed in, you will be redirected to homepage in 10
+      seconds.
+    </p>
+  </div>
+  {% else %} {{ render_form(form) }}
+  <br />
+  <p>
+    New user?
+    <a href="{{ url_for('auth.register') }}">Click here to register</a>.
+  </p>
+  {% endif %}
+</div>
+{% endblock %}

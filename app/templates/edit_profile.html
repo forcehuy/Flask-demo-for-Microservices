@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% from "bootstrap4/form.html" import render_form %}
+{% block title %}Flasky - Edit Profile{% endblock %} {% block page_content %}
+<div class="page-header">
+  <h1>Edit Your Profile</h1>
+</div>
+<div class="col-md-4">
+  {% if current_user.is_authenticated %} {{ render_form(form) }} {% else %}
+  <div>
+    <p class="text-danger">Please sign in to access this page.</p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

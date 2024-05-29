@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% from "bootstrap4/form.html" import render_form %}
+{% import "_macros.html" as macros %} {% block title %}Flasky - Post by {{
+posts[0].author.username }} [{{ posts[0].id }}]{% endblock %} {% block
+page_content %}
+<div class="container">
+  <div style="margin-top: 25px">{% include '_posts.html' %}</div>
+
+  <div style="margin-top: 50px">
+    <h4 id="comments">Comments</h4>
+    {% if current_user.can(Permission.COMMENT) %}
+    <div class="comment-form">{{ render_form(form) }}</div>
+    {% endif %} {% include '_comments.html' %} {% if pagination %}
+    <div class="pagination">
+      {{ macros.pagination_widget(pagination, '.post', fragment='#comments',
+      postid=posts[0].id) }}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
